@@ -4,9 +4,8 @@ const multerConfig = require('../config/multer');
 
 const routes = express.Router();
 
-routes.post('/posts', multer(multerConfig).single('file'), (req, res) => {
-    console.log(req.file);
-    return res.json({message: 'Ola mundo'});
-})
+const ProdutoController = require('./controllers/ProdutoController');
+
+routes.post('/produto', multer(multerConfig).single('file'), ProdutoController.store);
 
 module.exports = routes;
